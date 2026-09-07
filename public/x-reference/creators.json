@@ -1,0 +1,36 @@
+{
+  "fetchedAt": "2026-09-05T10:17:38.207Z",
+  "profiles": [
+    {
+      "id": "19694536",
+      "userName": "thejustinwelsh",
+      "name": "Justin Welsh",
+      "profilePicture": "https://pbs.twimg.com/profile_images/2059297321695793152/EA6xt7NP_normal.jpg",
+      "followers": 588294,
+      "description": "Writer & Entrepreneur. I write The Saturday Essay for 200,000+ ambitious people living and working on their own terms.",
+      "isBlueVerified": true
+    },
+    {
+      "id": "312681953",
+      "userName": "SahilBloom",
+      "name": "Sahil Bloom",
+      "profilePicture": "https://pbs.twimg.com/profile_images/1586859332104343552/V1HRpbP1_normal.jpg",
+      "followers": 1183905,
+      "description": "NYT Bestselling Author of The 5 Types of Wealth. Founder of Wild Roman. Gave up a grand slam on ESPN in 2012 and still waiting for it to land.",
+      "isBlueVerified": true
+    }
+  ],
+  "relevantJustinWelshPosts": [
+    {
+      "id": "2095136435409953205",
+      "text": "Something I've learned as I've grown older is that your friend group can normalize almost anything. \n\nDrinking too much, spending too much, working too much, complaining too much.\n\nChoose people who make you healthier, richer, smarter, and filled with joy.",
+      "likeCount": 563,
+      "replyCount": 108,
+      "retweetCount": 58,
+      "viewCount": 26728,
+      "bookmarkCount": 73,
+      "createdAt": "Wed Sep 02 13:07:06 +0000 2026",
+      "url": "https://x.com/thejustinwelsh/status/2095136435409953205"
+    }
+  ]
+}

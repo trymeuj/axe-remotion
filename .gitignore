@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# Rendered media and frame-check exports (reproducible from source)
+out/
+
+# Local editor and OS files
+.DS_Store
+.remotion/
+.env.local
+
+# Keep project image assets in public/ tracked. If source exports are added later,
+# place them under assets/ and decide intentionally whether to version them.
