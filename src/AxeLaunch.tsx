@@ -1371,7 +1371,7 @@ const ConsistencyCenter = () => (
   <main className="x-center final-notification-center consistency-center">
     <Header title="Notifications" />
     <div className="tabs"><b>All</b><span>Mentions</span></div>
-    <div className="consistency-native-notice">
+    <div className="consistency-native-notice" style={{transform:"scale(1.12)"}}>
       <span className="blue"><XLogo size={44} /></span>
       <Avatar src={USER_AVATAR} size={58} />
       <div><b>You have been consistent for the last <strong>90 days</strong></b><p>Keep replying. Your momentum is building.</p></div>
@@ -1410,7 +1410,7 @@ const storyCamera = (frame:number): StoryPlacement => {
   const wide={s:.94,x:0,y:0}, justin={s:5.35,x:-96,y:-30}, sahil={s:5.15,x:-96,y:220};
   const reply={s:2.05,x:-82,y:-112}, composer={s:2.45,x:-42,y:245}, thread={s:1.52,x:-58,y:-55};
   const metrics={s:5.2,x:-58,y:-170}, notices={s:2.06,x:-42,y:88}, repeat={s:1.34,x:0,y:0};
-  const consistency={s:2.3,x:-55,y:48}, analytics={s:2.05,x:-65,y:-35}, profile={s:2.28,x:-70,y:-92}, finalNotice={s:2.72,x:-78,y:-76};
+  const consistency={s:1.5,x:-55,y:48}, analytics={s:1.75,x:-65,y:50}, profile={s:2.28,x:-70,y:-92}, finalNotice={s:2.35,x:-65,y:60};
   if(frame<30)return wide;
   if(frame<50)return blend(wide,justin,cl(frame,30,50));
   if(frame<88)return blend(justin,wide,cl(frame,68,88));
@@ -1456,8 +1456,8 @@ const ContinuousXFilm = ({ frame }: { frame:number }) => {
 
 const EndCard = () => {
   const frame = useCurrentFrame();
-  const p = pop(frame, 695);
-  const sub = cl(frame, 705, 713);
+  const p = pop(frame, 817);
+  const sub = cl(frame, 827, 835);
   return (
     <AbsoluteFill className="end-card">
       <div
@@ -1472,10 +1472,10 @@ const EndCard = () => {
       >
         Reply your way to growth.
       </h1>
-      <p style={{ opacity: cl(frame, 713, 721) }}>
+      <p style={{ opacity: cl(frame, 835, 843) }}>
         Find the posts worth replying to. Show up consistently.
       </p>
-      <div className="end-url" style={{ opacity: cl(frame, 721, 730) }}>
+      <div className="end-url" style={{ opacity: cl(frame, 843, 852) }}>
         axe.oddpages.site
       </div>
     </AbsoluteFill>
@@ -1486,43 +1486,43 @@ export const AxeLaunch: React.FC = () => {
   const frame = useCurrentFrame();
   // The narrative order is unchanged; this clock trims only dead time between beats.
   // Both co-founder messages pause the underlying X world for a full two seconds.
-  const storyFrame = frame < 30
-    ? lin(frame,0,30,0,50)
-    : frame < 48
+  const storyFrame = frame < 36
+    ? lin(frame,0,36,0,50)
+    : frame < 66
       ? 50
-      : frame < 58
-        ? lin(frame,48,58,68,88)
-        : frame < 118
+      : frame < 78
+        ? lin(frame,66,78,68,88)
+        : frame < 138
           ? 88
-          : frame < 138
-            ? lin(frame,118,138,106,138)
-            : frame < 153
+          : frame < 164
+            ? lin(frame,138,164,106,138)
+            : frame < 188
               ? 138
-              : frame < 170
-                ? lin(frame,153,170,138,166)
-                : frame < 245
-                  ? lin(frame,170,245,166,270)
-                  : frame < 255
-                    ? lin(frame,245,255,270,300)
-                    : frame < 330
-                      ? lin(frame,255,330,300,390)
-                      : frame < 390
-                        ? lin(frame,330,390,390,480)
-                        : frame < 462
-                          ? lin(frame,390,462,480,620)
-                          : frame < 500
-                            ? lin(frame,462,500,620,670)
-                            : frame < 535
-                              ? lin(frame,500,535,670,720)
-                              : frame < 575
-                                ? lin(frame,535,575,720,780)
-                                : frame < 610
-                                  ? lin(frame,575,610,780,825)
+              : frame < 208
+                ? lin(frame,188,208,138,166)
+                : frame < 292
+                  ? lin(frame,208,292,166,270)
+                  : frame < 304
+                    ? lin(frame,292,304,270,300)
+                    : frame < 394
+                      ? lin(frame,304,394,300,390)
+                      : frame < 460
+                        ? lin(frame,394,460,390,480)
+                        : frame < 544
+                          ? lin(frame,460,544,480,620)
+                          : frame < 592
+                            ? lin(frame,544,592,620,670)
+                            : frame < 637
+                              ? lin(frame,592,637,670,720)
+                              : frame < 682
+                                ? lin(frame,637,682,720,780)
+                                : frame < 727
+                                  ? lin(frame,682,727,780,825)
                 : 825;
-  const attentionFocus = cl(frame, 30, 34) * cl(frame, 44, 48, 1, 0);
-  const useFocus = cl(frame, 138, 142) * cl(frame, 149, 153, 1, 0);
-  const thesisFocus = cl(frame, 610, 616) * cl(frame, 629, 635, 1, 0);
-  const messageFocus = frame>=58&&frame<118 || frame>=635&&frame<695 ? 1 : 0;
+  const attentionFocus = cl(frame, 36, 42) * cl(frame, 60, 66, 1, 0);
+  const useFocus = cl(frame, 164, 170) * cl(frame, 182, 188, 1, 0);
+  const thesisFocus = cl(frame, 727, 733) * cl(frame, 751, 757, 1, 0);
+  const messageFocus = frame>=78&&frame<138 || frame>=757&&frame<817 ? 1 : 0;
   const textFocus = Math.max(attentionFocus, useFocus, thesisFocus);
   const backgroundFocus = Math.max(textFocus, messageFocus);
   return (
@@ -1530,23 +1530,23 @@ export const AxeLaunch: React.FC = () => {
       <div className="stage-focus" style={{filter:`blur(${backgroundFocus*8}px) brightness(${1-backgroundFocus*.74})`,transform:`scale(${1+backgroundFocus*.015})`}}>
         <ContinuousXFilm frame={storyFrame}/>
       </div>
-      <Copy at={30} out={48}>ATTENTION IS ALREADY HERE.</Copy>
-      <Copy at={138} out={153}>USE IT.</Copy>
-      <Copy at={610} out={635}><em>REPLY.</em>&nbsp; BE USEFUL.&nbsp; REPEAT.</Copy>
+      <Copy at={36} out={66}>ATTENTION IS ALREADY HERE.</Copy>
+      <Copy at={164} out={188}>USE IT.</Copy>
+      <Copy at={727} out={757}><em>REPLY.</em>&nbsp; BE USEFUL.&nbsp; REPEAT.</Copy>
       {messageFocus>0&&<div className="message-camera">
-        {frame>=58&&frame<118&&<XMessageToast frame={frame} at={58} out={118} message="i also wanna get 112K views" />}
-        {frame>=635&&frame<695&&<XMessageToast frame={frame} at={635} out={695} message="Yo, 112K views, crazyyyy," />}
+        {frame>=78&&frame<138&&<XMessageToast frame={frame} at={78} out={138} message="i also wanna get 112K views" />}
+        {frame>=757&&frame<817&&<XMessageToast frame={frame} at={757} out={817} message="Yo, 112K views, crazyyyy," />}
       </div>}
       <div
         className="cut-flash"
         style={{
-          opacity: cl(frame, 241, 245, 0, 0.16) * cl(frame, 245, 250, 1, 0),
+          opacity: cl(frame, 288, 292, 0, 0.16) * cl(frame, 292, 298, 1, 0),
         }}
       />
-      {frame >= 695 && <EndCard />}
+      {frame >= 817 && <EndCard />}
       <div className="frame-vignette" />
       <div className="progress">
-        <i style={{ width: `${frame / 7.54}%` }} />
+        <i style={{ width: `${frame / 8.76}%` }} />
       </div>
     </AbsoluteFill>
   );
