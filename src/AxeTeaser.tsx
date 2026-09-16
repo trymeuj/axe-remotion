@@ -1,5 +1,5 @@
 import type {CSSProperties, ReactNode} from 'react';
-import {AbsoluteFill, Img, staticFile, useCurrentFrame} from 'remotion';
+import {AbsoluteFill, Audio, Img, Sequence, staticFile, useCurrentFrame} from 'remotion';
 
 const X_BLUE = '#1d9bf0';
 const X_TEXT = '#e7e9ea';
@@ -147,7 +147,18 @@ const PostSurface = ({post}: {post: (typeof posts)[number]}) => {
           fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif',
         }}
       >
-        <div style={{display: 'flex', gap: 18, padding: '34px 34px 0'}}>
+        <div
+          style={{
+            position: 'absolute',
+            left: 250,
+            right: 34,
+            bottom: 166,
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: 18,
+            zIndex: 1,
+          }}
+        >
           <Img src={post.avatar} style={{width: 58, height: 58, borderRadius: '50%', objectFit: 'cover', flex: '0 0 auto'}} />
           <div style={{minWidth: 0, flex: 1}}>
             <div style={{display: 'flex', alignItems: 'center', fontSize: 27, lineHeight: 1.1}}>
@@ -156,30 +167,31 @@ const PostSurface = ({post}: {post: (typeof posts)[number]}) => {
               <span style={{color: X_MUTED, marginLeft: 8}}>{post.handle} · 2h</span>
               <span style={{marginLeft: 'auto', color: X_MUTED, letterSpacing: 4}}>•••</span>
             </div>
-            <div style={{fontSize: 32, lineHeight: 1.36, marginTop: 17, maxWidth: 870}}>{post.text}</div>
+            <div style={{fontSize: 32, lineHeight: 1.36, marginTop: 17, maxWidth: 760}}>{post.text}</div>
           </div>
         </div>
 
-        <div style={{position: 'absolute', left: 0, right: 0, bottom: 64, height: 1, background: X_BORDER}} />
+        <div style={{position: 'absolute', left: 0, right: 0, bottom: 64, height: 1, background: X_BORDER, zIndex: 2}} />
         <div
           style={{
             position: 'absolute',
             bottom: 86,
             left: 70,
+            zIndex: 2,
           }}
         >
           <Action icon="reply" value={post.replies} />
         </div>
-        <div style={{position: 'absolute', bottom: 86, left: 240}}>
+        <div style={{position: 'absolute', bottom: 86, left: 240, zIndex: 2}}>
           <Action icon="repost" value={post.reposts} />
         </div>
-        <div style={{position: 'absolute', bottom: 86, left: 430}}>
+        <div style={{position: 'absolute', bottom: 86, left: 430, zIndex: 2}}>
           <Action icon="heart" value={post.likes} />
         </div>
-        <div style={{position: 'absolute', bottom: 78, left: 615}}>
+        <div style={{position: 'absolute', bottom: 78, left: 615, zIndex: 2}}>
           <Action icon="views" value="112K" target />
         </div>
-        <div style={{position: 'absolute', bottom: 86, left: 850}}>
+        <div style={{position: 'absolute', bottom: 86, left: 850, zIndex: 2}}>
           <Action icon="bookmark" />
         </div>
       </article>
@@ -189,6 +201,17 @@ const PostSurface = ({post}: {post: (typeof posts)[number]}) => {
 
 export const AxeAttentionTeaser: React.FC = () => {
   const frame = useCurrentFrame();
+
+  const cutBeats = [...postStarts, TITLE_START];
+  const beatTrack = cutBeats.map((at, index) => (
+    <Sequence key={at} from={at} durationInFrames={8} layout="none">
+      <Audio
+        src={staticFile('audio/axe-attention-tick.wav')}
+        volume={() => (index === cutBeats.length - 1 ? 0.72 : 0.56)}
+        playbackRate={index % 2 === 0 ? 1.06 : 0.9}
+      />
+    </Sequence>
+  ));
 
   if (frame >= TITLE_START) {
     return (
@@ -201,6 +224,7 @@ export const AxeAttentionTeaser: React.FC = () => {
           fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif',
         }}
       >
+        {beatTrack}
         <div style={{fontSize: 86, lineHeight: 1, letterSpacing: '-4.2px', fontWeight: 760}}>
           Attention is already here.
         </div>
@@ -218,6 +242,7 @@ export const AxeAttentionTeaser: React.FC = () => {
 
   return (
     <AbsoluteFill style={{background: '#000', overflow: 'hidden'}}>
+      {beatTrack}
       <PostSurface post={posts[index]} />
     </AbsoluteFill>
   );
